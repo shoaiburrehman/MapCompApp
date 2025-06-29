@@ -81,7 +81,7 @@ const CustomGooglePlacesAutoComplete: React.FC<GoogleAutoCompleteProps> = (props
         setHistory(stored);
     };
 
-    const onSelecthandle = async (data: any, details: any) => { 
+    const onSelectHandle = async (data: any, details: any) => { 
         onSelect(data, details); 
         setTimeout(() => loadHistory(), 100); 
     }
@@ -133,7 +133,7 @@ const CustomGooglePlacesAutoComplete: React.FC<GoogleAutoCompleteProps> = (props
                         style: styles.input
                     }}
                     minLength={1}
-                    onPress={(data, details = null) => onSelecthandle(data, details) }
+                    onPress={(data, details = null) => onSelectHandle(data, details) }
                     query={LibConfig}
                     debounce={500}
                     listViewDisplayed={showHistory}
@@ -164,7 +164,7 @@ const CustomGooglePlacesAutoComplete: React.FC<GoogleAutoCompleteProps> = (props
                             return(
                                 <View key={item.place_id}>
                                     <TouchableOpacity
-                                        onPress={handleHistory}
+                                        onPress={() => handleHistory(item)}
                                         activeOpacity={0.8}
                                         style={[styles.wrapper, basicStyle.flexDirectionRow, basicStyle.alignItemsCenter, { borderRadius: 0, padding: wp(12) }]}
                                     >

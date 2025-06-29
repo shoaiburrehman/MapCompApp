@@ -2,8 +2,8 @@ import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
-import { addToSearchHistory, getSearchHistory, shiftToTopHistory } from "../../store/serchHistory.store";
 import { CustomGooglePlacesAutoComplete } from "../../components/CustomGooglePlacesAutoComplete";
+import { addToSearchHistory, shiftToTopHistory } from "../../store/serchHistory.store";
 import useCustomtMapContainer from "../../hooks/useCustomMapContainer";
 import { Icon } from "../../components/Icon";
 import { wp } from "../../utils/style.utils";
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
                 <CustomGooglePlacesAutoComplete
                     placeholder="Enter Your Address"
                     value={address}
-                    onChange={(val) => { console.log('a: ', val); setAddress(val) }}
+                    onChange={(val) => setAddress(val) }
                     onSelect={async (data, details: any = null) => {
                         setAddress(details?.formatted_address);
 
@@ -74,9 +74,8 @@ const Home: React.FC = () => {
                             address: details?.formatted_address
                         });
                         if(data?.place_id){
-                            const stored = await getSearchHistory();
                             const payload = {
-                                place_id: stored.length + 1,
+                                place_id: Date.now() + 1,
                                 description: details?.formatted_address,
                                 latitude: details?.geometry?.location?.lat,
                                 longitude: details?.geometry?.location?.lng
