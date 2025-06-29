@@ -32,23 +32,25 @@ You need to add your **Google Maps & Places API Key** in three locations:
 ```ts
 // Config.ts
 export default {
-  GOOGLE_GEOCODING_API_KEY: "YOUR_GOOGLE_API_KEY"
+  GOOGLE_GEOCODING_API_KEY: "YOUR_GOOGLE_PLACES_API_KEY"
 };
 ```
 
 #### b) `AndroidMenifest.xml`
-    - Open `android/app/src/main/AndroidManifest.xml` and add the following line within the `<application>` tag:
-    ```xml
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="YOUR_API_KEY_HERE" />
-    ```
+- Open `android/app/src/main/AndroidManifest.xml` and add the following line **within the `<application>` tag**:
+
+```xml
+<meta-data
+  android:name="com.google.android.geo.API_KEY"
+  android:value="YOUR_GOOGLE_PLACES_API_KEY" />
+```
 
 #### c) `AppDelegate.mm`
-    - Open `AppDelegate.m` and add the following line inside the `didFinishLaunchingWithOptions` method:
-    ```objective-c
-    [GMSServices provideAPIKey:@"YOUR_API_KEY_HERE"];
-    ```
+- Open `AppDelegate.m` and add the following line **inside the `didFinishLaunchingWithOptions` method**:
+
+```objc
+[GMSServices provideAPIKey:@"YOUR_GOOGLE_PLACES_API_KEY"];
+```
 
 ### 3. **Run the application**:
    ```bash
